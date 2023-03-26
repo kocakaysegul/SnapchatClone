@@ -50,7 +50,7 @@ class SignInVC: UIViewController {
                     
                     let firestore = Firestore.firestore()
                     let userDictionary = ["email" : self.emailText.text!, "username" : self.usernameText.text!] as [String : String]
-                    firestore.collection("userInfo").addDocument(data: userDictionary) { error in
+                    firestore.collection("UserInfo").addDocument(data: userDictionary) { error in
                         if error != nil {
                             
                         }
