@@ -8,7 +8,7 @@
 import UIKit
 import Firebase
 
-class FeedVC: UIViewController {
+class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     
     @IBOutlet weak var tableView: UITableView!
@@ -18,6 +18,15 @@ class FeedVC: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        
+        tableView.delegate = self
+        tableView.dataSource = self
+        getSnapsFromFirebase()
+        getUserInfo()
+    }
+    
+    func getSnapsFromFirebase() {
+        
     }
     
     func getUserInfo() {
@@ -43,6 +52,15 @@ class FeedVC: UIViewController {
         let okButton = UIAlertAction(title: "OK", style: UIAlertAction.Style.cancel)
         alert.addAction(okButton)
         self.present(alert, animated: true)
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 10
+    }
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! FeedCell
+        cell.feedUsernameLabel.text = "test"
+        return cell
     }
 
 

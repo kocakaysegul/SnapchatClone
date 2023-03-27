@@ -38,9 +38,6 @@ class UploadVC: UIViewController, UIImagePickerControllerDelegate, UINavigationC
     
     
     @IBAction func uploadClicked(_ sender: Any) {
-        
-        //STORAGE
-        
         //Storage
                 
                 let storage = Storage.storage()
@@ -96,7 +93,7 @@ class UploadVC: UIViewController, UIImagePickerControllerDelegate, UINavigationC
                                                     
                                                 }
                                             } else {
-                                                let snapDictionary = ["imageUrlArray" : [imageUrl!], "snapOwner" : UserSingleton.sharedUserInfo.username, "date":FieldValue.serverTimestamp()] as [String : Any]
+                                                let snapDictionary = ["imageUrlArray" : [imageUrl!], "snapOwner" : UserSingleton.sharedUserInfo.username,"date":FieldValue.serverTimestamp()] as [String : Any]
                                                 
                                                 fireStore.collection("Snaps").addDocument(data: snapDictionary) { (error) in
                                                     if error != nil {
@@ -125,11 +122,6 @@ class UploadVC: UIViewController, UIImagePickerControllerDelegate, UINavigationC
                     
                     
                 }
-                
-           
-          
-            
-        
         
     }
     
