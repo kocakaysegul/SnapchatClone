@@ -23,6 +23,7 @@ class SignInVC: UIViewController {
     }
 
     @IBAction func signInClicked(_ sender: Any) {
+        
         if emailText.text != "" && passwordText.text != "" {
             
             Auth.auth().signIn(withEmail: self.emailText.text!, password: self.passwordText.text!) { result, error in
@@ -45,7 +46,7 @@ class SignInVC: UIViewController {
             
             Auth.auth().createUser(withEmail: emailText.text!, password: passwordText.text!) { auth, error in
                 if error != nil {
-                    self.makeAlert(title: "Erroré", message: error?.localizedDescription ?? "Error!")
+                    self.makeAlert(title: "Error ", message: error?.localizedDescription ?? "Error!")
                 } else {
                     
                     let firestore = Firestore.firestore()
